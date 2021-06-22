@@ -13,9 +13,9 @@ class User {
   @Column()
   admin: boolean;
   @CreateDateColumn()
-  createdBy: Date;
+  created_at: Date;
   @UpdateDateColumn()
-  updatedBy: Date;
+  updated_at: Date;
 
   constructor(){
     if(!this.id){
