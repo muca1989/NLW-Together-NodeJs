@@ -1,24 +1,23 @@
-import "reflect-metadata";
-import express, {Request, Response, NextFunction} from "express";
-import "express-async-errors";
-import { router} from "./routes";
- 
-import "./database";
-
-
-
+import "reflect-metadata"
+import express, {Request, Response, NextFunction}from 'express';
+import 'express-async-errors';
+import {router} from "./routes";
 const app = express();
+import "./database"
 
 app.use(express.json());
 app.use(router);
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if(err instanceof Error) {
-    return res.status(400).json({error: err.message});
-    }
-    return res.status(500).json({Status: "error", message: "Interno Server Error" });
-})
-
-app.listen(3000, () => {
-    console.log("Server is running "+"http://localhost:3000");
+app.use((err: Error, request: Request, response: Response, next: NextFunction)=> {
+if(err instanceof Error) {
+return response.status(400).json({
+    error: err.message,
+    status: "Error"
 });
+}
+return response.status(500).json({error: "Internal Error Server"})
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log('Running in port 3000'));
+ 

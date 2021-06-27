@@ -1,36 +1,39 @@
-import { getCustomRepository} from "typeorm";
-import { UserRepositories } from "../repositories/UserRepositories";
-
+import { getCustomRepository } from "typeorm";
+import { UsersRepository } from "../repositories/UsersRepositories";
+import { hash } from "bcryptjs";
 interface IUserRequest {
-  name: string;
-  email: string;
-  admin?: boolean;
+    name: string;
+    email: string;
+    admin: boolean;
+    password: string;
 }
 
-class CreateUserService{
-  async execute({ name, email, admin}: IUserRequest){
-    const usersRepository = getCustomRepository(UserRepositories);
+export class CreateUserService {
+    async execute({name, email, admin = false, password}: IUserRequest) {
+        const usersRepository = getCustomRepository(UsersRepository)
 
-    if(!email)
-    {
-      throw new Error ("Email is invalid..."+" Plz Check Email");
-    }
+            if(!email) {
+                throw new Error("Email incorreto");
+            };
+    
+            const alreadyExists = await usersRepository.findOne({
+                email,
+            });
+    
+            if(alreadyExists) {
+                throw new Error("Email já existe, está vindo do controller");
+            };
 
-    const userAlreadyExists = await usersRepository.findOne({ email});
+        const passwordHash = await hash(password, 8);
 
-    if(userAlreadyExists){
-      throw new Error("User already Exists");
-    }
+        const user = usersRepository.create({
+            name,
+            email,
+            admin,
+            password: passwordHash,
+        });
 
-    const user = usersRepository.create({
-      name,
-      email,
-      admin
-    });
-    await usersRepository.save(user);
-
-  }
-
-};
-
-export {CreateUserService};
+        await usersRepository.save(user);
+        return user;
+    };
+}

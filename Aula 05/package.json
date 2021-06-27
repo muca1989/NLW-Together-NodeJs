@@ -1,6 +1,6 @@
 {
-  "name": "aula01",
-  "version": "1.0.0",
+  "name": "aula05",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Samuel Santos F --sfliegner@gmail.com--",
   "license": "ISC",
   "devDependencies": {
     "@types/uuid": "^8.3.0",
@@ -24,6 +24,10 @@
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
     "trim-newlines": "^4.0.2",
-    "typeorm": "^0.2.34"
-  }
+    "typeorm": "^0.2.34",
+    "uuid": "^8.3.2",
+    "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.4.0"
+  },
+  "repository": "https://github.com/muca1989/NLW-Together-NodeJs"
 }

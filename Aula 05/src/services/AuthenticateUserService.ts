@@ -15,14 +15,14 @@ export class AuthenticateUserService {
         if(!user) {
             throw new Error("Email/Password incorrect");
         };
-        // Verificar senha do usuario 
+
       const passwordMatch = await compare(password, user.password)
 
        if(!passwordMatch) { 
         throw new Error("Email/Password incorrect")
     };
 
-    const token = sign({email: user.email}, "cf37ab95c13b0cbe7e8c2f938021277c", {
+    const token = sign({email: user.email}, "dc84e80e2b7a85f498366aa981d5dcb7", {
         subject: user.id,
         expiresIn: "1d"
     });
@@ -30,10 +30,5 @@ export class AuthenticateUserService {
 
     };
 };
-// token com expiração menor
-// e refresh foken com expiração maior, sendo que quando expirar esse. será gerado outro com base 
-// no token que foi cadastrado no sistema
-
-
 
 

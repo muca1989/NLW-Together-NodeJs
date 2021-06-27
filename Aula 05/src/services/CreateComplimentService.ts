@@ -14,13 +14,13 @@ export class CreateComplimentService {
         const usersRepository = getCustomRepository(UsersRepository);
 
         if(user_sender === user_receiver) {
-            throw new Error("Incorrect User ") // estou com um pequena duvida aqui!!
+            throw new Error("Incorrect User ")
         }
 
         const userReceiverExists = await usersRepository.findOne(user_sender);
 
         if(!userReceiverExists) {
-            throw new Error("User revceiver does not exists")
+            throw new Error("User reciver does not exists")
         }
 
         const compliment = complimentsRepository.create({
