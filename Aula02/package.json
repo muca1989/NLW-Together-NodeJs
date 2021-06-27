@@ -1,6 +1,6 @@
 {
-  "name": "aula01",
-  "version": "1.0.0",
+  "name": "aula02",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Samuel Santos Filho --sfliegner@gmail.com--",
   "license": "ISC",
   "devDependencies": {
     "@types/uuid": "^8.3.0",

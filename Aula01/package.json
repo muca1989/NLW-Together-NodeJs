@@ -1,6 +1,6 @@
 {
   "name": "aula01",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     
   },
   "keywords": [],
-  "author": "",
+  "author": "Samuel Santos F --sfliegner@gmail.com--",
   "license": "ISC",
   "devDependencies": {
     "ts-node-dev": "^1.1.6",
